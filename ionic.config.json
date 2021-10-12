@@ -1,0 +1,7 @@
+{
+  "name": "calculatorChallenge",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
