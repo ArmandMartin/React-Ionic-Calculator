@@ -1,0 +1,58 @@
+#calculatorLayout {
+	display: grid;
+	margin-top: auto;
+	grid-gap: 1rem;
+	padding: 1rem;
+}
+#clearButton {
+	grid-area: 1/1/1/1;
+}
+#divisionButton {
+	grid-area: 1/3/1/3;
+}
+#multiplicationButton {
+	grid-area: 1/4/1/4;
+}
+#sevenButton {
+	grid-area: 2/1/2/1;
+}
+#eightButton {
+	grid-area: 2/2/2/2;
+}
+#nineButton {
+	grid-area: 2/3/2/3;
+}
+#subtractionButton {
+	grid-area: 2/4/2/4;
+}
+#fourButton {
+	grid-area: 3/1/3/1;
+}
+#fiveButton {
+	grid-area: 3/2/3/2;
+}
+#sixButton {
+	grid-area: 3/3/3/3;
+}
+#additionButton {
+	grid-area: 3/4/3/4;
+}
+#oneButton {
+	grid-area: 4/1/4/1;
+}
+#twoButton {
+	grid-area: 4/2/4/2;
+}
+#threeButton {
+	grid-area: 4/3/4/3;
+}
+#decimalButton {
+	grid-area: 5/3/5/3;
+}
+#equalsButton {
+	height: 200%;
+	grid-area: 4/4/5/4;
+}
+#zeroButton {
+	grid-area: 5/1/5/2;
+}
