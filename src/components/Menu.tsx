@@ -10,7 +10,7 @@ import './Menu.css';
 export default function Menu() {
 	return (
 		<IonMenu
-			type='push'
+			type='overlay'
 			swipeGesture={false}
 			side='start'
 			id='mainMenu'

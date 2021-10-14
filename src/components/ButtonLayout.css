@@ -1,17 +1,35 @@
 #calculatorLayout {
 	display: grid;
+	grid-template-columns: repeat(auto, minmax(auto, 1fr));
+	height: 55%;
 	margin-top: auto;
-	grid-gap: 1rem;
-	padding: 1rem;
+}
+.roundedButton {
+	height: auto;
+	width: auto;
+	margin: 7%;
+	font-size: 2rem;
+	text-align: center;
+	--border-radius: 50%;
+	--box-shadow: 0 0 0 0.095rem rgb(255, 255, 255);
+	--background: rgba(98, 0, 128, 0);
 }
 #clearButton {
 	grid-area: 1/1/1/1;
+	--box-shadow: 0 0 0 0.095rem rgb(240, 156, 30);
+	--background: rgba(98, 0, 128, 0);
 }
 #divisionButton {
 	grid-area: 1/3/1/3;
+	--box-shadow: none;
+	--background: rgb(240, 156, 30);
+	--color: rgb(98, 0, 128);
 }
 #multiplicationButton {
 	grid-area: 1/4/1/4;
+	--box-shadow: none;
+	--background: rgb(240, 156, 30);
+	--color: rgb(98, 0, 128);
 }
 #sevenButton {
 	grid-area: 2/1/2/1;
@@ -24,6 +42,9 @@
 }
 #subtractionButton {
 	grid-area: 2/4/2/4;
+	--box-shadow: none;
+	--background: rgb(240, 156, 30);
+	--color: rgb(98, 0, 128);
 }
 #fourButton {
 	grid-area: 3/1/3/1;
@@ -36,6 +57,9 @@
 }
 #additionButton {
 	grid-area: 3/4/3/4;
+	--box-shadow: none;
+	--background: rgb(240, 156, 30);
+	--color: rgb(98, 0, 128);
 }
 #oneButton {
 	grid-area: 4/1/4/1;
@@ -50,9 +74,15 @@
 	grid-area: 5/3/5/3;
 }
 #equalsButton {
-	height: 200%;
 	grid-area: 4/4/5/4;
+	height: 185%;
+	--border-radius: 50%/25%;
+	--box-shadow: none;
+	--background: rgb(240, 156, 30);
+	--color: rgb(98, 0, 128);
 }
 #zeroButton {
 	grid-area: 5/1/5/2;
+	width: 185%;
+	--border-radius: 25%/50%;
 }
