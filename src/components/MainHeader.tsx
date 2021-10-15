@@ -1,7 +1,7 @@
 import { menuController } from '@ionic/core';
 import { IonHeader, IonToolbar, IonButton, IonMenuButton } from '@ionic/react';
 
-export default function MainHeader() {
+const MainHeader = () => {
 	return (
 		<div>
 			<IonHeader>
@@ -17,4 +17,5 @@ export default function MainHeader() {
 			</IonHeader>
 		</div>
 	);
-}
+};
+export default MainHeader;
