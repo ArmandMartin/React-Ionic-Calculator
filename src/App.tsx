@@ -1,5 +1,5 @@
 import { Route } from 'react-router-dom';
-import { IonApp, IonRouterOutlet } from '@ionic/react';
+import { IonApp, IonContent, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 
 /* Core CSS required for Ionic components to work properly */
@@ -25,18 +25,22 @@ import Calculator from './pages/Calculator';
 import Conversions from './pages/Conversions';
 import MainHeader from './components/MainHeader';
 
-const App: React.FC = () => (
-	<IonApp>
-		<Menu />
-		<MainHeader />
-		<IonReactRouter>
-			<IonRouterOutlet id='mainContent'>
-				<Route path='/' component={Calculator} />
-				<Route path='/history' component={Calculator} />
-				<Route path='/conversions' component={Conversions} />
-			</IonRouterOutlet>
-		</IonReactRouter>
-	</IonApp>
-);
+const App: React.FC = () => {
+	return (
+		<IonApp>
+			<MainHeader />
+			<Menu />
+			<IonContent>
+				<IonReactRouter>
+					<IonRouterOutlet id='mainContent'>
+						<Route path='/' component={Calculator} />
+						<Route path='/history' component={Calculator} />
+						<Route path='/conversions' component={Conversions} />
+					</IonRouterOutlet>
+				</IonReactRouter>
+			</IonContent>
+		</IonApp>
+	);
+};
 
 export default App;

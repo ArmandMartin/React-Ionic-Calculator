@@ -1,24 +1,6 @@
 /* Ionic Variables and Theming. For more info, please see:
 http://ionicframework.com/docs/theming/ */
 
-/* .pillButton {
-	height: 50px;
-	width: 100px;
-	--border-radius: 50%;
-	font-size: 20px;
-}
-.circleButton {
-	height: 50px;
-	width: 50px;
-	--border-radius: 50%;
-	font-size: 20px;
-} */
-#one {
-	margin-left: 0rem;
-}
-#two {
-	margin: 0rem;
-}
 /** Ionic CSS Variables **/
 :root {
 	/** primary **/
