@@ -9,7 +9,7 @@ import {
 	IonSelectOption,
 	IonToolbar,
 } from '@ionic/react';
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import './Conversions.css';
 
 const Conversions = () => {

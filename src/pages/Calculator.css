@@ -42,13 +42,13 @@
 	grid-area: 1/3/1/3;
 	--box-shadow: none;
 	--background: rgb(240, 156, 30);
-	--color: rgb(98, 0, 128);
+	--color: rgb(19, 2, 24);
 }
 #multiplicationButton {
 	grid-area: 1/4/1/4;
 	--box-shadow: none;
 	--background: rgb(240, 156, 30);
-	--color: rgb(98, 0, 128);
+	--color: rgb(19, 2, 24);
 }
 #sevenButton {
 	grid-area: 2/1/2/1;
@@ -63,7 +63,7 @@
 	grid-area: 2/4/2/4;
 	--box-shadow: none;
 	--background: rgb(240, 156, 30);
-	--color: rgb(98, 0, 128);
+	--color: rgb(19, 2, 24);
 }
 #fourButton {
 	grid-area: 3/1/3/1;
@@ -78,7 +78,7 @@
 	grid-area: 3/4/3/4;
 	--box-shadow: none;
 	--background: rgb(240, 156, 30);
-	--color: rgb(98, 0, 128);
+	--color: rgb(19, 2, 24);
 }
 #oneButton {
 	grid-area: 4/1/4/1;
@@ -98,7 +98,7 @@
 	--border-radius: 50%/25%;
 	--box-shadow: none;
 	--background: rgb(240, 156, 30);
-	--color: rgb(98, 0, 128);
+	--color: rgb(19, 2, 24);
 }
 #zeroButton {
 	grid-area: 5/1/5/2;

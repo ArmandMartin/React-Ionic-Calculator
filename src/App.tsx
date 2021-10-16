@@ -24,17 +24,18 @@ import Menu from './components/Menu';
 import Calculator from './pages/Calculator';
 import Conversions from './pages/Conversions';
 import MainHeader from './components/MainHeader';
+import CalculatorHistory from './pages/CalculatorHistory';
 
 const App: React.FC = () => {
 	return (
-		<IonApp>
+		<IonApp className='normalTheme'>
 			<MainHeader />
 			<Menu />
 			<IonContent>
 				<IonReactRouter>
 					<IonRouterOutlet id='mainContent'>
 						<Route path='/' component={Calculator} />
-						<Route path='/history' component={Calculator} />
+						<Route path='/history' component={CalculatorHistory} />
 						<Route path='/conversions' component={Conversions} />
 					</IonRouterOutlet>
 				</IonReactRouter>

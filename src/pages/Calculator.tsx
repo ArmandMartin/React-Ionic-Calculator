@@ -18,7 +18,7 @@ const Calculator = () => {
 
 	async function storeComputation(problem: string, answer: string) {
 		await store.length().then((val) => {
-			store.set(val.toString(), { problem: problem, answer: answer });
+			store.set(val.toString(), [problem, answer]);
 		});
 	}
 
