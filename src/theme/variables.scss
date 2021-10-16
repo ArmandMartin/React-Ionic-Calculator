@@ -75,6 +75,19 @@ http://ionicframework.com/docs/theming/ */
 	--ion-color-light-shade: #d7d8da;
 	--ion-color-light-tint: #f5f6f9;
 
+	.sans-serif {
+		--ion-font-family: sans-serif;
+	}
+	.monospace {
+		--ion-font-family: monospace;
+	}
+	.math {
+		--ion-font-family: math;
+	}
+	.fangsong {
+		--ion-font-family: fangsong;
+	}
+
 	.normalTheme {
 		--ion-background-color: rgb(19, 2, 24);
 		--ion-text-color: rgb(255, 255, 255);

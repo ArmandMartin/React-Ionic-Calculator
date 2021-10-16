@@ -33,8 +33,8 @@ export default function Menu() {
 								<IonLabel>Conversions</IonLabel>
 							</IonItem>
 						) : null}
-						{window.location.pathname !== '/theme' ? (
-							<IonItem button routerLink={'/theme'}>
+						{window.location.pathname !== '/settings' ? (
+							<IonItem button routerLink={'/settings'}>
 								<IonLabel>Settings</IonLabel>
 							</IonItem>
 						) : null}

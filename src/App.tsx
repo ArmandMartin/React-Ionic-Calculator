@@ -27,6 +27,7 @@ import Conversions from './pages/Conversions';
 import MainHeader from './components/MainHeader';
 import CalculatorHistory from './pages/CalculatorHistory';
 import React, { useEffect } from 'react';
+import SettingsPage from './pages/Settings';
 
 const App: React.FC = () => {
 	const themeStore = new Storage({
@@ -34,14 +35,22 @@ const App: React.FC = () => {
 		storeName: 'calculatorTheme',
 		driverOrder: [Drivers.IndexedDB],
 	});
+	const fontStore = new Storage({
+		name: 'calculatorDB',
+		storeName: 'calculatorFont',
+		driverOrder: [Drivers.IndexedDB],
+	});
 	async function initiateStorage() {
 		await themeStore.create();
+		await fontStore.create();
 	}
 	initiateStorage();
 
 	const [values, setValues] = React.useState({
 		theme: '',
 		themeStoreLength: 0,
+		font: '',
+		fontStoreLength: 0,
 	});
 	const initiateTheme = async () => {
 		await themeStore.set('theme', 'viceTheme');
@@ -60,6 +69,23 @@ const App: React.FC = () => {
 			setValues({ ...values, theme: newTheme, themeStoreLength: 1 });
 		}
 	};
+	const initiateFont = async () => {
+		await fontStore.set('font', 'sans-serif');
+		setValues({ ...values, font: 'sans-serif', fontStoreLength: 1 });
+	};
+	const getCurrentFont = async () => {
+		let temp = '';
+		await fontStore.get('font').then((val) => {
+			temp = val;
+		});
+		setValues({ ...values, font: temp });
+	};
+	const setNewFont = async (newfont: string) => {
+		if (values.font !== newfont) {
+			await fontStore.set('font', newfont);
+			setValues({ ...values, font: newfont, fontStoreLength: 1 });
+		}
+	};
 	useEffect(() => {
 		console.log(values);
 		if (values.theme === '' && values.themeStoreLength === 0) {
@@ -68,23 +94,38 @@ const App: React.FC = () => {
 		if (values.theme === '' && values.themeStoreLength === 1) {
 			getCurrentTheme();
 		}
+		if (values.font === '' && values.fontStoreLength === 0) {
+			initiateFont();
+		}
+		if (values.font === '' && values.fontStoreLength === 1) {
+			getCurrentFont();
+		}
 	});
 
 	return (
-		<IonApp className={values.theme}>
-			<MainHeader />
-			<Menu />
-			<IonContent>
-				<IonReactRouter>
-					<IonRouterOutlet id='mainContent'>
-						<Route path='/' component={Calculator} />
-						<Route path='/history' component={CalculatorHistory} />
-						<Route path='/conversions' component={Conversions} />
-						<Route path='/Themes' component={Calculator} />
-					</IonRouterOutlet>
-				</IonReactRouter>
-			</IonContent>
-		</IonApp>
+		<div id='themeWrapper' className={values.theme}>
+			<div id='fontWrapper' className={values.font}>
+				<IonApp className={values.theme}>
+					<MainHeader />
+					<Menu />
+					<IonContent>
+						<IonReactRouter>
+							<IonRouterOutlet id='mainContent'>
+								<Route path='/' component={Calculator} />
+								<Route path='/history' component={CalculatorHistory} />
+								<Route path='/conversions' component={Conversions} />
+								<Route
+									path='/settings'
+									render={() => (
+										<SettingsPage themeSetter={setNewTheme} fontSetter={setNewFont} />
+									)}
+								/>
+							</IonRouterOutlet>
+						</IonReactRouter>
+					</IonContent>
+				</IonApp>
+			</div>
+		</div>
 	);
 };
 
