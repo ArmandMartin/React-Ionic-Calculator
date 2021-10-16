@@ -1,10 +1,14 @@
 import { IonButton, IonPage } from '@ionic/react';
-import { Storage } from '@ionic/storage';
+import { Storage, Drivers } from '@ionic/storage';
 import React, { useEffect } from 'react';
 import './Calculator.css';
 
 const Calculator = () => {
-	const store = new Storage();
+	const history = new Storage({
+		name: 'calculatorDB',
+		storeName: 'calculatorHistory',
+		driverOrder: [Drivers.IndexedDB],
+	});
 	const [values, setValues] = React.useState({
 		result: '',
 		v1: '',
@@ -12,13 +16,13 @@ const Calculator = () => {
 		operator: '',
 	});
 	async function initiateStorage() {
-		await store.create();
+		await history.create();
 	}
 	initiateStorage();
 
-	async function storeComputation(problem: string, answer: string) {
-		await store.length().then((val) => {
-			store.set(val.toString(), [problem, answer]);
+	async function historyStoreComputation(problem: string, answer: string) {
+		await history.length().then((val) => {
+			history.set(val.toString(), [problem, answer]);
 		});
 	}
 
@@ -60,7 +64,7 @@ const Calculator = () => {
 			case '÷':
 				problem = values.v1 + ' ÷ ' + values.v2;
 				answer = (parseFloat(values.v1) / parseFloat(values.v2)).toString();
-				storeComputation(problem, answer);
+				historyStoreComputation(problem, answer);
 				setValues({
 					...values,
 					result: answer,
@@ -72,7 +76,7 @@ const Calculator = () => {
 			case 'x':
 				problem = values.v1 + ' x ' + values.v2;
 				answer = (parseFloat(values.v1) * parseFloat(values.v2)).toString();
-				storeComputation(problem, answer);
+				historyStoreComputation(problem, answer);
 				setValues({
 					...values,
 					result: answer,
@@ -84,7 +88,7 @@ const Calculator = () => {
 			case '-':
 				problem = values.v1 + ' - ' + values.v2;
 				answer = (parseFloat(values.v1) - parseFloat(values.v2)).toString();
-				storeComputation(problem, answer);
+				historyStoreComputation(problem, answer);
 				setValues({
 					...values,
 					result: answer,
@@ -96,7 +100,7 @@ const Calculator = () => {
 			case '+':
 				problem = values.v1 + ' + ' + values.v2;
 				answer = (parseFloat(values.v1) + parseFloat(values.v2)).toString();
-				storeComputation(problem, answer);
+				historyStoreComputation(problem, answer);
 				setValues({
 					...values,
 					result: answer,

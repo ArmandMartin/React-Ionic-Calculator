@@ -7,17 +7,21 @@ import {
 	IonLabel,
 	IonListHeader,
 } from '@ionic/react';
-import { Storage } from '@ionic/storage';
+import { Drivers, Storage } from '@ionic/storage';
 import React, { useEffect } from 'react';
 
 const CalculatorHistory = () => {
-	const store = new Storage();
+	const history = new Storage({
+		name: 'calculatorDB',
+		storeName: 'calculatorHistory',
+		driverOrder: [Drivers.IndexedDB],
+	});
 	async function initiateStorage() {
-		await store.create();
+		await history.create();
 	}
 	async function getData() {
-		var temp: Object[] = [];
-		await store
+		let temp: Object[] = [];
+		await history
 			.forEach((value, key, index) => {
 				temp.push(value);
 			})
@@ -26,31 +30,31 @@ const CalculatorHistory = () => {
 			});
 	}
 	initiateStorage();
-	const emptyNestedStringArray: string[][] = [[]];
 	const [values, setValues] = React.useState({
-		data: emptyNestedStringArray,
+		data: Array<Array<String>>(),
 	});
 	const setData = (data: any) => {
 		setValues({ ...values, data: data });
 	};
 	useEffect(() => {
-		if (values.data === emptyNestedStringArray) {
+		if (values.data.length === 0) {
 			getData();
 		}
 	});
 	return (
 		<IonPage>
-			<IonList>
-				<IonListHeader>Calculation History</IonListHeader>
-				{values.data.map((pair: string[], index: number) => {
-					console.log(pair[0] + ' = ' + pair[1]);
-					<IonItem key={index}>
-						<IonLabel>
-							<p>{pair[0] + ' = ' + pair[1]}</p>
-						</IonLabel>
-					</IonItem>;
-				})}
-			</IonList>
+			<IonContent>
+				<IonList>
+					<IonListHeader>Calculation History</IonListHeader>
+					{values.data.map((pair, index: number) => (
+						<IonItem key={index}>
+							<IonLabel>
+								<p id={index.toString() + 'view'}>{pair[0] + ' = ' + pair[1]}</p>
+							</IonLabel>
+						</IonItem>
+					))}
+				</IonList>
+			</IonContent>
 		</IonPage>
 	);
 };

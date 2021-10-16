@@ -97,6 +97,7 @@ http://ionicframework.com/docs/theming/ */
 			border-color: rgb(255, 255, 255);
 		}
 		.roundedButton {
+			--box-shadow: 0 0 0 0.095rem rgb(255, 255, 255);
 			--background: rgba(98, 0, 128, 0);
 		}
 		#clearButton {
@@ -146,6 +147,7 @@ http://ionicframework.com/docs/theming/ */
 			border-color: rgb(248, 144, 231);
 		}
 		.roundedButton {
+			--box-shadow: 0 0 0 0.095rem rgb(255, 255, 255);
 			--background: rgb(248, 144, 231);
 		}
 		#clearButton {
@@ -153,22 +155,27 @@ http://ionicframework.com/docs/theming/ */
 			--background: rgba(98, 0, 128, 0);
 		}
 		#divisionButton {
+			--box-shadow: 0 0 0 0.095rem rgb(248, 144, 231);
 			--background: rgb(255, 255, 255);
 			--color: rgb(248, 144, 231);
 		}
 		#multiplicationButton {
+			--box-shadow: 0 0 0 0.095rem rgb(248, 144, 231);
 			--background: rgb(255, 255, 255);
 			--color: rgb(248, 144, 231);
 		}
 		#subtractionButton {
+			--box-shadow: 0 0 0 0.095rem rgb(248, 144, 231);
 			--background: rgb(255, 255, 255);
 			--color: rgb(248, 144, 231);
 		}
 		#additionButton {
+			--box-shadow: 0 0 0 0.095rem rgb(248, 144, 231);
 			--background: rgb(255, 255, 255);
 			--color: rgb(248, 144, 231);
 		}
 		#equalsButton {
+			--box-shadow: 0 0 0 0.095rem rgb(248, 144, 231);
 			--background: rgb(255, 255, 255);
 			--color: rgb(248, 144, 231);
 		}
