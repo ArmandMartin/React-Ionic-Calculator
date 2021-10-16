@@ -60,7 +60,7 @@ const Conversions = () => {
 		<IonPage>
 			<IonContent>
 				<IonItem id='measurmentSelector'>
-					<IonToolbar>
+					<IonToolbar id='measurmentSelectorToolbar'>
 						<IonSegment scrollable value={values.measurement}>
 							{measurments().map((mes: string, index: any) => (
 								<IonSegmentButton

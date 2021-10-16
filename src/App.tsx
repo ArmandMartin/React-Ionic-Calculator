@@ -19,16 +19,24 @@ import '@ionic/react/css/flex-utils.css';
 import '@ionic/react/css/display.css';
 
 /* Theme variables */
-import './theme/variables.css';
+import './theme/variables.scss';
 import Menu from './components/Menu';
 import Calculator from './pages/Calculator';
 import Conversions from './pages/Conversions';
 import MainHeader from './components/MainHeader';
 import CalculatorHistory from './pages/CalculatorHistory';
+import React from 'react';
 
 const App: React.FC = () => {
+	const [values, setValues] = React.useState({
+		theme: 'viceTheme',
+	});
+	const setTheme = (newTheme: string) => {
+		setValues({ ...values, theme: newTheme });
+	};
+
 	return (
-		<IonApp className='normalTheme'>
+		<IonApp className={values.theme}>
 			<MainHeader />
 			<Menu />
 			<IonContent>
@@ -37,6 +45,7 @@ const App: React.FC = () => {
 						<Route path='/' component={Calculator} />
 						<Route path='/history' component={CalculatorHistory} />
 						<Route path='/conversions' component={Conversions} />
+						<Route path='/Themes' component={Calculator} />
 					</IonRouterOutlet>
 				</IonReactRouter>
 			</IonContent>

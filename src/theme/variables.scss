@@ -74,14 +74,103 @@ http://ionicframework.com/docs/theming/ */
 	--ion-color-light-contrast-rgb: 0, 0, 0;
 	--ion-color-light-shade: #d7d8da;
 	--ion-color-light-tint: #f5f6f9;
-}
-:root > * .normalTheme {
-	--ion-background-color: rgb(19, 2, 24);
-	--ion-text-color: rgb(255, 255, 255);
-}
-ion-header {
-	--ion-background-color: rgb(41, 23, 48);
-}
-ion-menu-button {
-	--color: rgb(255, 255, 255);
+
+	.normalTheme {
+		--ion-background-color: rgb(19, 2, 24);
+		--ion-text-color: rgb(255, 255, 255);
+		ion-header {
+			--ion-background-color: rgb(41, 23, 48);
+		}
+		ion-menu-button {
+			--color: rgb(255, 255, 255);
+		}
+
+		#measurmentSelectorToolbar {
+			--ion-background-color: rgb(240, 156, 30);
+		}
+
+		ion-segment-button {
+			--color: rgb(255, 255, 255);
+			--ion-background-color: rgb(255, 255, 255);
+		}
+		.inputLine {
+			border-color: rgb(255, 255, 255);
+		}
+		.roundedButton {
+			--background: rgba(98, 0, 128, 0);
+		}
+		#clearButton {
+			--box-shadow: 0 0 0 0.095rem rgb(240, 156, 30);
+			--background: rgba(98, 0, 128, 0);
+		}
+		#divisionButton {
+			--background: rgb(240, 156, 30);
+			--color: rgb(19, 2, 24);
+		}
+		#multiplicationButton {
+			--background: rgb(240, 156, 30);
+			--color: rgb(19, 2, 24);
+		}
+		#subtractionButton {
+			--background: rgb(240, 156, 30);
+			--color: rgb(19, 2, 24);
+		}
+		#additionButton {
+			--background: rgb(240, 156, 30);
+			--color: rgb(19, 2, 24);
+		}
+		#equalsButton {
+			--background: rgb(240, 156, 30);
+			--color: rgb(19, 2, 24);
+		}
+	}
+	.viceTheme {
+		--ion-background-color: rgb(11, 211, 211);
+		--ion-text-color: rgb(255, 255, 255);
+		ion-header {
+			--ion-background-color: rgb(248, 144, 231);
+		}
+		ion-menu-button {
+			--color: rgb(255, 255, 255);
+		}
+
+		#measurmentSelectorToolbar {
+			--ion-background-color: rgb(255, 255, 255);
+		}
+
+		ion-segment-button {
+			--color: rgb(248, 144, 231);
+			--ion-background-color: rgb(255, 255, 255);
+		}
+		#inputLine {
+			border-color: rgb(248, 144, 231);
+		}
+		.roundedButton {
+			--background: rgb(248, 144, 231);
+		}
+		#clearButton {
+			--box-shadow: 0 0 0 0.095rem rgb(248, 144, 231);
+			--background: rgba(98, 0, 128, 0);
+		}
+		#divisionButton {
+			--background: rgb(255, 255, 255);
+			--color: rgb(248, 144, 231);
+		}
+		#multiplicationButton {
+			--background: rgb(255, 255, 255);
+			--color: rgb(248, 144, 231);
+		}
+		#subtractionButton {
+			--background: rgb(255, 255, 255);
+			--color: rgb(248, 144, 231);
+		}
+		#additionButton {
+			--background: rgb(255, 255, 255);
+			--color: rgb(248, 144, 231);
+		}
+		#equalsButton {
+			--background: rgb(255, 255, 255);
+			--color: rgb(248, 144, 231);
+		}
+	}
 }
