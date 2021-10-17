@@ -44,61 +44,54 @@ const App: React.FC = () => {
 		await themeStore.create();
 		await fontStore.create();
 	}
-	initiateStorage();
-
 	const [values, setValues] = React.useState({
-		theme: '',
-		themeStoreLength: 0,
-		font: '',
-		fontStoreLength: 0,
+		theme: 'daft',
+		font: 'daft',
 	});
-	const initiateTheme = async () => {
-		await themeStore.set('theme', 'viceTheme');
-		setValues({ ...values, theme: 'viceTheme', themeStoreLength: 1 });
-	};
-	const getCurrentTheme = async () => {
-		let temp = '';
-		await themeStore.get('theme').then((val) => {
-			temp = val;
-		});
-		setValues({ ...values, theme: temp });
-	};
 	const setNewTheme = async (newTheme: string) => {
 		if (values.theme !== newTheme) {
 			await themeStore.set('theme', newTheme);
-			setValues({ ...values, theme: newTheme, themeStoreLength: 1 });
+			setValues({ ...values, theme: newTheme });
 		}
-	};
-	const initiateFont = async () => {
-		await fontStore.set('font', 'sans-serif');
-		setValues({ ...values, font: 'sans-serif', fontStoreLength: 1 });
-	};
-	const getCurrentFont = async () => {
-		let temp = '';
-		await fontStore.get('font').then((val) => {
-			temp = val;
-		});
-		setValues({ ...values, font: temp });
 	};
 	const setNewFont = async (newfont: string) => {
 		if (values.font !== newfont) {
 			await fontStore.set('font', newfont);
-			setValues({ ...values, font: newfont, fontStoreLength: 1 });
+			setValues({ ...values, font: newfont });
 		}
 	};
+	const initiateThemeAndFont = async () => {
+		var alreadySet = false;
+		await themeStore.length().then((val) => {
+			val === 1 ? (alreadySet = true) : (alreadySet = false);
+		});
+		if (alreadySet === false) {
+			await themeStore.set('theme', 'vice');
+			await fontStore.set('font', 'sans-serif');
+			setValues({
+				...values,
+				theme: 'vice',
+				font: 'sans-serif',
+			});
+		} else {
+			getCurrentThemeAndFont();
+		}
+	};
+	const getCurrentThemeAndFont = async () => {
+		let temp = '';
+		let temp2 = '';
+		await themeStore.get('theme').then((val) => {
+			temp = val;
+		});
+		await fontStore.get('font').then((val) => {
+			temp2 = val;
+		});
+		setValues({ ...values, theme: temp, font: temp2 });
+	};
+	initiateStorage();
 	useEffect(() => {
-		console.log(values);
-		if (values.theme === '' && values.themeStoreLength === 0) {
-			initiateTheme();
-		}
-		if (values.theme === '' && values.themeStoreLength === 1) {
-			getCurrentTheme();
-		}
-		if (values.font === '' && values.fontStoreLength === 0) {
-			initiateFont();
-		}
-		if (values.font === '' && values.fontStoreLength === 1) {
-			getCurrentFont();
+		if (values.theme === '' && values.font === '') {
+			initiateThemeAndFont();
 		}
 	});
 
@@ -117,7 +110,12 @@ const App: React.FC = () => {
 								<Route
 									path='/settings'
 									render={() => (
-										<SettingsPage themeSetter={setNewTheme} fontSetter={setNewFont} />
+										<SettingsPage
+											themeSetter={setNewTheme}
+											fontSetter={setNewFont}
+											currentTheme={values.theme}
+											currentFont={values.font}
+										/>
 									)}
 								/>
 							</IonRouterOutlet>

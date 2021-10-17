@@ -11,7 +11,38 @@
 	font-size: 4rem;
 	overflow-wrap: break-all;
 }
+#calculatorGrid {
+	align-items: center;
+	--ion-grid-columns: 4;
+	--ion-grid-column-padding: 0;
+	--ion-grid-padding: 0px;
+}
+.calculatorColumns {
+	margin: 0rem;
+	text-align: center;
+}
+.calculatorRows {
+	margin-left: 1rem;
+	margin-right: 1rem;
+	margin-bottom: -0.3rem;
+}
 
+.calculatorButtons {
+	width: 4rem;
+	height: 4rem;
+	--border-radius: 100%;
+}
+#zeroButton {
+	margin-left: 1.3rem;
+	--border-radius: 35rem;
+	width: 86%;
+}
+#equalsButton {
+	--border-radius: 35rem;
+	height: 188%;
+}
+
+/* 
 #calculatorLayout {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
@@ -90,4 +121,4 @@
 	grid-area: 5/1/5/2;
 	width: 192%;
 	--border-radius: 25%/50%;
-}
+} */

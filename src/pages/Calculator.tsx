@@ -1,4 +1,11 @@
-import { IonButton, IonPage } from '@ionic/react';
+import {
+	IonButton,
+	IonCol,
+	IonContent,
+	IonGrid,
+	IonPage,
+	IonRow,
+} from '@ionic/react';
 import { Storage, Drivers } from '@ionic/storage';
 import React, { useEffect } from 'react';
 import './Calculator.css';
@@ -152,7 +159,96 @@ const Calculator = () => {
 					</h1>
 				)}
 			</div>
-			<div id='calculatorLayout'>
+			<IonContent id='calculatorGridWrapper'>
+				<IonGrid fixed={true} id='calculatorGrid'>
+					<IonRow className='calculatorRows'>
+						<IonCol className='calculatorColumns'>
+							<IonButton id='clearButton' className='calculatorButtons'>
+								c
+							</IonButton>
+						</IonCol>
+						<IonCol className='calculatorColumns'></IonCol>
+						<IonCol className='calculatorColumns'>
+							<IonButton id='divisionButton' className='calculatorButtons'>
+								/
+							</IonButton>
+						</IonCol>
+						<IonCol className='calculatorColumns'>
+							<IonButton id='multiplicationButton' className='calculatorButtons'>
+								x
+							</IonButton>
+						</IonCol>
+					</IonRow>
+					<IonRow className='calculatorRows'>
+						<IonCol className='calculatorColumns'>
+							<IonButton className='calculatorButtons'>7</IonButton>
+						</IonCol>
+						<IonCol className='calculatorColumns'>
+							<IonButton className='calculatorButtons'>8</IonButton>
+						</IonCol>
+						<IonCol className='calculatorColumns'>
+							<IonButton className='calculatorButtons'>9</IonButton>
+						</IonCol>
+						<IonCol className='calculatorColumns'>
+							<IonButton id='subtractionButton' className='calculatorButtons'>
+								-
+							</IonButton>
+						</IonCol>
+					</IonRow>
+					<IonRow className='calculatorRows'>
+						<IonCol className='calculatorColumns'>
+							<IonButton className='calculatorButtons'>4</IonButton>
+						</IonCol>
+						<IonCol className='calculatorColumns'>
+							<IonButton className='calculatorButtons'>5</IonButton>
+						</IonCol>
+						<IonCol className='calculatorColumns'>
+							<IonButton className='calculatorButtons'>6</IonButton>
+						</IonCol>
+						<IonCol className='calculatorColumns'>
+							<IonButton id='additionButton' className='calculatorButtons'>
+								+
+							</IonButton>
+						</IonCol>
+					</IonRow>
+					<IonRow className='calculatorRows'>
+						<IonCol className='calculatorColumns'>
+							<IonButton className='calculatorButtons'>1</IonButton>
+						</IonCol>
+						<IonCol className='calculatorColumns'>
+							<IonButton className='calculatorButtons'>2</IonButton>
+						</IonCol>
+						<IonCol className='calculatorColumns'>
+							<IonButton className='calculatorButtons'>3</IonButton>
+						</IonCol>
+						<IonCol className='calculatorColumns'>
+							<IonButton id='equalsButton' className='calculatorButtons'>
+								=
+							</IonButton>
+						</IonCol>
+					</IonRow>
+					<IonRow>
+						<IonCol className='calculatorColumns' size='2'>
+							<IonButton id='zeroButton' className='calculatorButtons'>
+								0
+							</IonButton>
+						</IonCol>
+						<IonCol className='calculatorColumns'>
+							<IonButton id='decimalButton' className='calculatorButtons'>
+								.
+							</IonButton>
+						</IonCol>
+						<IonCol className='calculatorColumns'></IonCol>
+					</IonRow>
+				</IonGrid>
+			</IonContent>
+		</IonPage>
+	);
+};
+
+export default Calculator;
+{
+	/* <div id='calculatorLayout'>
 				<IonButton id='clearButton' class='roundedButton' onClick={handleClear}>
 					C
 				</IonButton>
@@ -259,9 +355,5 @@ const Calculator = () => {
 					onClick={handleComputation}>
 					=
 				</IonButton>
-			</div>
-		</IonPage>
-	);
-};
-
-export default Calculator;
+			</div> */
+}
