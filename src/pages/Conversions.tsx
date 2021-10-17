@@ -38,7 +38,6 @@ const Conversions = () => {
 		});
 	};
 	const handleFromUnitsChange = (fromU: string) => {
-		console.log(values);
 		let toVal = converter(values.fromValue).from(fromU).to(values.toUnits);
 		setValues({ ...values, fromUnits: fromU, toValue: toVal });
 	};
@@ -54,8 +53,6 @@ const Conversions = () => {
 		let fromV = converter(toV).from(values.toUnits).to(values.fromUnits);
 		setValues({ ...values, fromValue: fromV, toValue: toV });
 	};
-
-	console.log(values);
 	return (
 		<IonPage>
 			<IonContent>
