@@ -59,11 +59,11 @@ const App: React.FC = () => {
 			return val;
 		});
 		if (temp !== 1) {
-			await themeStore.set('theme', 'vice');
+			await themeStore.set('theme', 'normal');
 			await fontStore.set('font', 'sans-serif');
 			setValues({
 				...values,
-				theme: 'vice',
+				theme: 'normal',
 				font: 'sans-serif',
 			});
 		} else {
