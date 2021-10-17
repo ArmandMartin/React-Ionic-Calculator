@@ -1,124 +1,107 @@
-#inputLine {
-	display: grid;
-	border-bottom: 2px solid;
-	margin-top: auto;
-	margin-bottom: 25px;
-	margin: auto 5vw 0 5vw;
-	justify-content: end;
-	overflow-wrap: break-all;
-}
-.calculatorInput {
-	font-size: 4rem;
-	overflow-wrap: break-all;
-}
-#calculatorGrid {
-	align-items: center;
-	--ion-grid-columns: 4;
-	--ion-grid-column-padding: 0;
-	--ion-grid-padding: 0px;
-}
-.calculatorColumns {
-	margin: 0rem;
-	text-align: center;
-}
-.calculatorRows {
-	margin-left: 1rem;
-	margin-right: 1rem;
-	margin-bottom: -0.3rem;
-}
+@media (orientation: portrait) {
+	#inputLine {
+		display: grid;
+		border-bottom: 2px solid;
+		margin: auto 5vw 5vw;
+		justify-content: end;
+		overflow-wrap: break-all;
+	}
+	.calculatorInput {
+		position: absolute;
+		bottom: 0;
+		font-size: 4rem;
+		overflow-wrap: break-all;
+	}
+	#calculatorGrid {
+		position: absolute;
+		margin-bottom: 1.1rem;
+		bottom: 0;
+		align-items: center;
+		--ion-grid-columns: 4;
+		--ion-grid-column-padding: 0;
+		--ion-grid-padding: 0px;
+	}
+	.calculatorColumns {
+		margin: 0rem;
+		text-align: center;
+	}
+	.calculatorRows {
+		margin-left: 1rem;
+		margin-right: 1rem;
+		margin-bottom: -0.3rem;
+	}
 
-.calculatorButtons {
-	width: 4rem;
-	height: 4rem;
-	--border-radius: 100%;
-}
-#zeroButton {
-	margin-left: 1.3rem;
-	--border-radius: 35rem;
-	width: 86%;
-}
-#equalsButton {
-	--border-radius: 35rem;
-	height: 188%;
-}
+	.calculatorButtons {
+		width: 4rem;
+		height: 4rem;
+		--border-radius: 100%;
+		font-size: 1.7rem;
+	}
 
-/* 
-#calculatorLayout {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	gap: 2px 2px;
-	justify-self: center;
-	align-self: center;
-	justify-content: center;
-	margin: 5vw 5vw 5vw 5vw;
-	max-width: 100%;
-	width: auto;
-	height: auto;
+	#zeroButton {
+		margin-left: 1.2rem;
+		--border-radius: 35rem;
+		width: 87%;
+	}
+
+	#equalsButton {
+		--border-radius: 35rem;
+		height: 188%;
+	}
 }
-.roundedButton {
-	height: 5rem;
-	width: 5rem;
-	font-size: 2rem;
-	text-align: center;
-	--border-radius: 50%;
+@media (orientation: landscape) {
+	#inputLine {
+		display: grid;
+		border-bottom: 2px solid;
+		margin: auto 5vw 2vw;
+		justify-content: end;
+		overflow-wrap: break-all;
+	}
+	.calculatorInput {
+		position: absolute;
+		bottom: 0;
+		font-size: 4rem;
+		overflow-wrap: break-all;
+	}
+	#calculatorGrid {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		/* bring your own prefixes */
+		transform: translate(-50%, -50%);
+		margin-bottom: 1.1rem;
+
+		align-items: center;
+		--ion-grid-columns: 4;
+		--ion-grid-column-padding: 0;
+		--ion-grid-padding: 0px;
+	}
+	.calculatorColumns {
+		text-align: center;
+	}
+	.calculatorRows {
+		margin-left: 1rem;
+		margin-right: 1rem;
+	}
+
+	.calculatorButtons {
+		width: 87%;
+		height: 2rem;
+		font-size: 1.3rem;
+		--border-radius: 35rem;
+	}
+
+	#zeroButton {
+		margin-left: 1.2rem;
+		--border-radius: 35rem;
+		width: 89%;
+	}
+	#decimalButton {
+		width: 82%;
+	}
+
+	#equalsButton {
+		--border-radius: 35rem;
+		height: 188%;
+	}
 }
-#clearButton {
-	grid-area: 1/1/1/1;
-}
-#divisionButton {
-	grid-area: 1/3/1/3;
-	--box-shadow: none;
-}
-#multiplicationButton {
-	grid-area: 1/4/1/4;
-	--box-shadow: none;
-}
-#sevenButton {
-	grid-area: 2/1/2/1;
-}
-#eightButton {
-	grid-area: 2/2/2/2;
-}
-#nineButton {
-	grid-area: 2/3/2/3;
-}
-#subtractionButton {
-	grid-area: 2/4/2/4;
-	--box-shadow: none;
-}
-#fourButton {
-	grid-area: 3/1/3/1;
-}
-#fiveButton {
-	grid-area: 3/2/3/2;
-}
-#sixButton {
-	grid-area: 3/3/3/3;
-}
-#additionButton {
-	grid-area: 3/4/3/4;
-	--box-shadow: none;
-}
-#oneButton {
-	grid-area: 4/1/4/1;
-}
-#twoButton {
-	grid-area: 4/2/4/2;
-}
-#threeButton {
-	grid-area: 4/3/4/3;
-}
-#decimalButton {
-	grid-area: 5/3/5/3;
-}
-#equalsButton {
-	grid-area: 4/4/5/4;
-	height: 192%;
-	--border-radius: 50%/25%;
-	--box-shadow: none;
-}
-#zeroButton {
-	grid-area: 5/1/5/2;
-	width: 192%;
-	--border-radius: 25%/50%;
-} */

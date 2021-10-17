@@ -48,9 +48,7 @@ const CalculatorHistory = () => {
 					<IonListHeader>Calculation History</IonListHeader>
 					{values.data.map((pair, index: number) => (
 						<IonItem key={index}>
-							<IonLabel>
-								<p id={index.toString() + 'view'}>{pair[0] + ' = ' + pair[1]}</p>
-							</IonLabel>
+							<IonLabel>{pair[0] + ' = ' + pair[1]}</IonLabel>
 						</IonItem>
 					))}
 				</IonList>

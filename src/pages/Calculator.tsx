@@ -1,3 +1,4 @@
+import { present } from '@ionic/core/dist/types/utils/overlays';
 import {
 	IonButton,
 	IonCol,
@@ -5,12 +6,14 @@ import {
 	IonGrid,
 	IonPage,
 	IonRow,
+	useIonAlert,
 } from '@ionic/react';
 import { Storage, Drivers } from '@ionic/storage';
 import React, { useEffect } from 'react';
 import './Calculator.css';
 
 const Calculator = () => {
+	const [present] = useIonAlert();
 	const history = new Storage({
 		name: 'calculatorDB',
 		storeName: 'calculatorHistory',
@@ -55,6 +58,10 @@ const Calculator = () => {
 			setValues({ ...values, v2: values.v2 + num, result: '' });
 			return;
 		}
+		present(
+			'You may only enter 15 digits per variable operator side. You may use another 15 after you enter an operator.',
+			[{ text: 'Ok' }]
+		);
 	};
 	const handleClear = () => {
 		setValues({
@@ -142,103 +149,164 @@ const Calculator = () => {
 	});
 	return (
 		<IonPage>
-			<div id='inputLine'>
-				{values.result !== '' ? (
-					values.operator === '' ? (
-						<h1 id='calculatorInput'>{values.result}</h1>
-					) : (
-						<h1 id='calculatorInput'>
-							{values.result + ' ' + values.operator + ' ' + values.v2}
-						</h1>
-					)
-				) : values.operator === '' ? (
-					<h1 id='calculatorInput'>{values.v1}</h1>
-				) : (
-					<h1 id='calculatorInput'>
-						{values.v1 + ' ' + values.operator + ' ' + values.v2}
-					</h1>
-				)}
-			</div>
-			<IonContent id='calculatorGridWrapper'>
+			<IonContent id='calculatorContentWrapper'>
 				<IonGrid fixed={true} id='calculatorGrid'>
+					<IonRow>
+						<IonCol id='inputLine'>
+							{values.result !== '' ? (
+								values.operator === '' ? (
+									<h1 id='calculatorInput'>{values.result}</h1>
+								) : (
+									<h1 id='calculatorInput'>
+										{values.result + ' ' + values.operator + ' ' + values.v2}
+									</h1>
+								)
+							) : values.operator === '' ? (
+								<h1 id='calculatorInput'>{values.v1}</h1>
+							) : (
+								<h1 id='calculatorInput'>
+									{values.v1 + ' ' + values.operator + ' ' + values.v2}
+								</h1>
+							)}
+						</IonCol>
+					</IonRow>
 					<IonRow className='calculatorRows'>
 						<IonCol className='calculatorColumns'>
-							<IonButton id='clearButton' className='calculatorButtons'>
+							<IonButton
+								id='clearButton'
+								className='calculatorButtons'
+								onClick={handleClear}>
 								c
 							</IonButton>
 						</IonCol>
 						<IonCol className='calculatorColumns'></IonCol>
 						<IonCol className='calculatorColumns'>
-							<IonButton id='divisionButton' className='calculatorButtons'>
-								/
+							<IonButton
+								id='divisionButton'
+								className='calculatorButtons'
+								onClick={() => handleOperatorChange('÷')}>
+								÷
 							</IonButton>
 						</IonCol>
 						<IonCol className='calculatorColumns'>
-							<IonButton id='multiplicationButton' className='calculatorButtons'>
+							<IonButton
+								id='multiplicationButton'
+								className='calculatorButtons'
+								onClick={() => handleOperatorChange('x')}>
 								x
 							</IonButton>
 						</IonCol>
 					</IonRow>
 					<IonRow className='calculatorRows'>
 						<IonCol className='calculatorColumns'>
-							<IonButton className='calculatorButtons'>7</IonButton>
+							<IonButton
+								className='calculatorButtons'
+								onClick={() => handleVarChange('7')}>
+								7
+							</IonButton>
 						</IonCol>
 						<IonCol className='calculatorColumns'>
-							<IonButton className='calculatorButtons'>8</IonButton>
+							<IonButton
+								className='calculatorButtons'
+								onClick={() => handleVarChange('8')}>
+								8
+							</IonButton>
 						</IonCol>
 						<IonCol className='calculatorColumns'>
-							<IonButton className='calculatorButtons'>9</IonButton>
+							<IonButton
+								className='calculatorButtons'
+								onClick={() => handleVarChange('9')}>
+								9
+							</IonButton>
 						</IonCol>
 						<IonCol className='calculatorColumns'>
-							<IonButton id='subtractionButton' className='calculatorButtons'>
+							<IonButton
+								id='subtractionButton'
+								className='calculatorButtons'
+								onClick={() => handleOperatorChange('-')}>
 								-
 							</IonButton>
 						</IonCol>
 					</IonRow>
 					<IonRow className='calculatorRows'>
 						<IonCol className='calculatorColumns'>
-							<IonButton className='calculatorButtons'>4</IonButton>
+							<IonButton
+								className='calculatorButtons'
+								onClick={() => handleVarChange('4')}>
+								4
+							</IonButton>
 						</IonCol>
 						<IonCol className='calculatorColumns'>
-							<IonButton className='calculatorButtons'>5</IonButton>
+							<IonButton
+								className='calculatorButtons'
+								onClick={() => handleVarChange('5')}>
+								5
+							</IonButton>
 						</IonCol>
 						<IonCol className='calculatorColumns'>
-							<IonButton className='calculatorButtons'>6</IonButton>
+							<IonButton
+								className='calculatorButtons'
+								onClick={() => handleVarChange('6')}>
+								6
+							</IonButton>
 						</IonCol>
 						<IonCol className='calculatorColumns'>
-							<IonButton id='additionButton' className='calculatorButtons'>
+							<IonButton
+								id='additionButton'
+								className='calculatorButtons'
+								onClick={() => handleOperatorChange('+')}>
 								+
 							</IonButton>
 						</IonCol>
 					</IonRow>
 					<IonRow className='calculatorRows'>
 						<IonCol className='calculatorColumns'>
-							<IonButton className='calculatorButtons'>1</IonButton>
+							<IonButton
+								className='calculatorButtons'
+								onClick={() => handleVarChange('1')}>
+								1
+							</IonButton>
 						</IonCol>
 						<IonCol className='calculatorColumns'>
-							<IonButton className='calculatorButtons'>2</IonButton>
+							<IonButton
+								className='calculatorButtons'
+								onClick={() => handleVarChange('2')}>
+								2
+							</IonButton>
 						</IonCol>
 						<IonCol className='calculatorColumns'>
-							<IonButton className='calculatorButtons'>3</IonButton>
+							<IonButton
+								className='calculatorButtons'
+								onClick={() => handleVarChange('3')}>
+								3
+							</IonButton>
 						</IonCol>
-						<IonCol className='calculatorColumns'>
-							<IonButton id='equalsButton' className='calculatorButtons'>
+						<IonCol className='calculatorColumns' id='equalsColumn'>
+							<IonButton
+								id='equalsButton'
+								className='calculatorButtons'
+								onClick={handleComputation}>
 								=
 							</IonButton>
 						</IonCol>
 					</IonRow>
 					<IonRow>
 						<IonCol className='calculatorColumns' size='2'>
-							<IonButton id='zeroButton' className='calculatorButtons'>
+							<IonButton
+								id='zeroButton'
+								className='calculatorButtons'
+								onClick={() => handleVarChange('0')}>
 								0
 							</IonButton>
 						</IonCol>
-						<IonCol className='calculatorColumns'>
-							<IonButton id='decimalButton' className='calculatorButtons'>
+						<IonCol className='calculatorColumns' size='1'>
+							<IonButton
+								id='decimalButton'
+								className='calculatorButtons'
+								onClick={() => handleOperatorChange('+')}>
 								.
 							</IonButton>
 						</IonCol>
-						<IonCol className='calculatorColumns'></IonCol>
 					</IonRow>
 				</IonGrid>
 			</IonContent>
@@ -247,113 +315,3 @@ const Calculator = () => {
 };
 
 export default Calculator;
-{
-	/* <div id='calculatorLayout'>
-				<IonButton id='clearButton' class='roundedButton' onClick={handleClear}>
-					C
-				</IonButton>
-				<></>
-				<IonButton
-					id='divisionButton'
-					className='operatorButton'
-					class='roundedButton'
-					onClick={() => handleOperatorChange('÷')}>
-					÷
-				</IonButton>
-				<IonButton
-					id='multiplicationButton'
-					className='operatorButton'
-					class='roundedButton'
-					onClick={() => handleOperatorChange('x')}>
-					x
-				</IonButton>
-
-				<IonButton
-					id='sevenButton'
-					class='roundedButton'
-					onClick={() => handleVarChange('7')}>
-					7
-				</IonButton>
-				<IonButton
-					id='eightButton'
-					class='roundedButton'
-					onClick={() => handleVarChange('8')}>
-					8
-				</IonButton>
-				<IonButton
-					id='nineButton'
-					class='roundedButton'
-					onClick={() => handleVarChange('9')}>
-					9
-				</IonButton>
-				<IonButton
-					id='subtractionButton'
-					className='operatorButton'
-					class='roundedButton'
-					onClick={() => handleOperatorChange('-')}>
-					-
-				</IonButton>
-				<IonButton
-					id='fourButton'
-					class='roundedButton'
-					onClick={() => handleVarChange('4')}>
-					4
-				</IonButton>
-				<IonButton
-					id='fiveButton'
-					class='roundedButton'
-					onClick={() => handleVarChange('5')}>
-					5
-				</IonButton>
-				<IonButton
-					id='sixButton'
-					class='roundedButton'
-					onClick={() => handleVarChange('6')}>
-					6
-				</IonButton>
-				<IonButton
-					id='additionButton'
-					className='operatorButton'
-					class='roundedButton'
-					onClick={() => handleOperatorChange('+')}>
-					+
-				</IonButton>
-				<IonButton
-					id='oneButton'
-					class='roundedButton'
-					onClick={() => handleVarChange('1')}>
-					1
-				</IonButton>
-				<IonButton
-					id='twoButton'
-					class='roundedButton'
-					onClick={() => handleVarChange('2')}>
-					2
-				</IonButton>
-				<IonButton
-					id='threeButton'
-					class='roundedButton'
-					onClick={() => handleVarChange('3')}>
-					3
-				</IonButton>
-				<IonButton
-					id='zeroButton'
-					class='roundedButton'
-					onClick={() => handleVarChange('0')}>
-					0
-				</IonButton>
-				<IonButton
-					id='decimalButton'
-					class='roundedButton'
-					onClick={() => handleVarChange('.')}>
-					.
-				</IonButton>
-				<IonButton
-					id='equalsButton'
-					className='operatorButton'
-					class='roundedButton'
-					onClick={handleComputation}>
-					=
-				</IonButton>
-			</div> */
-}

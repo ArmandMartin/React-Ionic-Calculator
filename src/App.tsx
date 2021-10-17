@@ -45,27 +45,20 @@ const App: React.FC = () => {
 		await fontStore.create();
 	}
 	const [values, setValues] = React.useState({
-		theme: 'daft',
-		font: 'daft',
+		theme: '',
+		font: '',
 	});
-	const setNewTheme = async (newTheme: string) => {
-		if (values.theme !== newTheme) {
-			await themeStore.set('theme', newTheme);
-			setValues({ ...values, theme: newTheme });
-		}
-	};
-	const setNewFont = async (newfont: string) => {
-		if (values.font !== newfont) {
-			await fontStore.set('font', newfont);
-			setValues({ ...values, font: newfont });
-		}
+
+	const setnewThemeAndFont = async (newTheme: string, newFont: string) => {
+		await themeStore.set('theme', newTheme);
+		await fontStore.set('font', newFont);
+		setValues({ ...values, theme: newTheme, font: newFont });
 	};
 	const initiateThemeAndFont = async () => {
-		var alreadySet = false;
-		await themeStore.length().then((val) => {
-			val === 1 ? (alreadySet = true) : (alreadySet = false);
+		let temp = await themeStore.length().then((val) => {
+			return val;
 		});
-		if (alreadySet === false) {
+		if (temp !== 1) {
 			await themeStore.set('theme', 'vice');
 			await fontStore.set('font', 'sans-serif');
 			setValues({
@@ -111,8 +104,7 @@ const App: React.FC = () => {
 									path='/settings'
 									render={() => (
 										<SettingsPage
-											themeSetter={setNewTheme}
-											fontSetter={setNewFont}
+											setter={setnewThemeAndFont}
 											currentTheme={values.theme}
 											currentFont={values.font}
 										/>
